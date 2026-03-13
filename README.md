@@ -1,16 +1,303 @@
-# React + Vite
+# 🎓 College Event Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application that allows colleges to manage and participate in campus events from a single platform.
+Students can browse and register for events while administrators can create and manage events with limited seat capacity.
 
-Currently, two official plugins are available:
+This project was built as a **hackathon prototype** using modern full-stack technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 👩‍🎓 Student Features
 
-## Expanding the ESLint configuration
+* Sign up using college email
+* Secure login authentication
+* View all upcoming college events
+* Search and filter events by club or type
+* Register for events with limited seats
+* View registered events in user profile
+* Calendar view of upcoming events
+* Real-time seat availability indicator
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧑‍💼 Admin Features
+
+* Admin login access
+* Create and publish new events
+* Set event details (club, venue, seats, etc.)
+* Track number of registrations
+* Monitor upcoming events
+
+---
+
+# 🧠 Problem Solved
+
+In many colleges, event information is scattered across WhatsApp groups, posters, and social media.
+Students often miss opportunities or face overbooking issues.
+
+This system provides:
+
+* **Centralized event platform**
+* **Seat-limited registrations**
+* **Admin event management**
+* **Structured event discovery**
+
+---
+
+# 🏗️ Tech Stack
+
+## Frontend
+
+* React (Vite)
+* HTML5
+* CSS3
+* JavaScript
+
+## Backend
+
+* FastAPI (Python)
+
+## Database
+
+* Supabase (PostgreSQL)
+
+## Other Tools
+
+* Uvicorn
+* Fetch API
+* dotenv
+
+---
+
+# ⚙️ System Architecture
+
+```
+React Frontend
+       ↓
+FastAPI Backend
+       ↓
+Supabase Database
+```
+
+### Data Flow
+
+1. Student signs up or logs in
+2. FastAPI authenticates user
+3. Supabase stores student data
+4. Admin creates events
+5. Students fetch events from backend
+6. Students register for events
+7. Database updates seat availability
+
+---
+
+# 📂 Project Structure
+
+```
+college-event-portal
+│
+├── backend
+│   ├── main.py
+│   └── .env
+│
+├── src
+│   ├── components
+│   │   ├── Navbar.jsx
+│   │   ├── SignupModal.jsx
+│   │   ├── LoginModal.jsx
+│   │   ├── EventCard.jsx
+│   │   └── Profile.jsx
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── styles.css
+│
+├── package.json
+└── README.md
+```
+
+---
+
+# 🗄️ Database Schema
+
+## Students Table
+
+| Column        | Type    |
+| ------------- | ------- |
+| id            | integer |
+| email         | text    |
+| branch        | text    |
+| semester      | text    |
+| password_hash | text    |
+
+---
+
+## Events Table
+
+| Column      | Type    |
+| ----------- | ------- |
+| id          | integer |
+| title       | text    |
+| club        | text    |
+| description | text    |
+| date        | text    |
+| venue       | text    |
+| seats       | integer |
+| registered  | integer |
+
+---
+
+## Registrations Table
+
+| Column     | Type    |
+| ---------- | ------- |
+| id         | integer |
+| student_id | integer |
+| event_id   | integer |
+
+---
+
+# 🔑 Authentication
+
+### Student Login
+
+Students register using their college email and password.
+
+### Admin Login
+
+Admin credentials are predefined for demo purposes:
+
+```
+Email: admin@college.edu
+Password: Admin@2024
+```
+
+---
+
+# 🛠️ Installation & Setup
+
+## 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/your-repo/college-event-portal.git
+cd college-event-portal
+```
+
+---
+
+## 2️⃣ Setup Backend
+
+Install dependencies
+
+```
+pip install fastapi uvicorn supabase python-dotenv
+```
+
+Create `.env`
+
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
+```
+
+Run backend server
+
+```
+uvicorn main:app --reload
+```
+
+Backend runs on
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 3️⃣ Setup Frontend
+
+Install dependencies
+
+```
+npm install
+```
+
+Run frontend
+
+```
+npm run dev
+```
+
+Open browser
+
+```
+http://localhost:5173
+```
+
+---
+
+# 📌 API Endpoints
+
+## Student APIs
+
+### Signup
+
+```
+POST /signup
+```
+
+### Login
+
+```
+POST /login
+```
+
+---
+
+## Event APIs
+
+### Create Event
+
+```
+POST /create-event
+```
+
+### Get Events
+
+```
+GET /events
+```
+
+---
+
+# 📊 Future Improvements
+
+* Email verification for student signup
+* Role-based authentication
+* Event image uploads
+* Real-time seat locking
+* Notifications for upcoming events
+* Club-specific dashboards
+* Event recommendation system
+
+---
+
+# 🏆 Hackathon Highlights
+
+* Full-stack architecture
+* Role-based system (Admin + Student)
+* Event seat management
+* Clean and minimal UI
+* Real-time event listing
+
+---
+
+# 👩‍💻 Author
+
+Developed as a hackathon project for building a **college-wide event management platform**.
+
+---
+
+# ⭐ License
+
+This project is open-source and available for educational use.
