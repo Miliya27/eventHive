@@ -280,15 +280,6 @@ GET /events
 * Club-specific dashboards
 * Event recommendation system
 
----
-
-# 🏆 Hackathon Highlights
-
-* Full-stack architecture
-* Role-based system (Admin + Student)
-* Event seat management
-* Clean and minimal UI
-* Real-time event listing
 
 ---
 
@@ -296,8 +287,4 @@ GET /events
 
 Developed as a hackathon project for building a **college-wide event management platform**.
 
----
 
-# ⭐ License
-
-This project is open-source and available for educational use.
